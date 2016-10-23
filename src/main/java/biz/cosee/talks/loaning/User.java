@@ -16,6 +16,10 @@ public class User {
 
     private boolean locked;
 
+    @ManyToOne
+    @JoinColumn(name = "language_code")
+    private Language language = Language.EN;
+
     @OneToMany(mappedBy = "user")
     private List<Loan> loans = new ArrayList<>();
 
@@ -52,5 +56,9 @@ public class User {
 
     public boolean isLocked() {
         return locked;
+    }
+
+    public Language getLanguage() {
+        return language;
     }
 }
