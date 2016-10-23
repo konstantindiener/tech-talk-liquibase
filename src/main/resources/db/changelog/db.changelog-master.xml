@@ -39,4 +39,8 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet id="3" author="kdiener">
+        <addUniqueConstraint tableName="USER" columnNames="username"/>
+    </changeSet>
 </databaseChangeLog>
