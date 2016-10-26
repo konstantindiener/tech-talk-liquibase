@@ -4,21 +4,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="1" author="kdiener">
-        <createTable tableName="BOOK">
+        <createTable tableName="book">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="title" type="varchar(255)"/>
         </createTable>
 
-        <createTable tableName="USER">
+        <createTable tableName="user">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="varchar(255)"/>
         </createTable>
 
-        <createTable tableName="LOAN">
+        <createTable tableName="loan">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -33,7 +33,7 @@
     </changeSet>
 
     <changeSet id="2" author="kdiener">
-        <addColumn tableName="USER">
+        <addColumn tableName="user">
             <column name="locked" type="boolean">
                 <constraints nullable="false"/>
             </column>
@@ -41,29 +41,29 @@
     </changeSet>
 
     <changeSet id="3" author="kdiener">
-        <addUniqueConstraint tableName="USER" columnNames="username"/>
+        <addUniqueConstraint tableName="user" columnNames="username"/>
     </changeSet>
 
     <changeSet id="4" author="kdiener">
-        <createTable tableName="LANGUAGE">
+        <createTable tableName="language">
             <column name="language_code" type="varchar(10)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="description" type="varchar(255)"/>
         </createTable>
 
-        <insert tableName="LANGUAGE">
+        <insert tableName="language">
             <column name="language_code">de</column>
             <column name="description">Deutsch</column>
         </insert>
 
-        <insert tableName="LANGUAGE">
+        <insert tableName="language">
             <column name="language_code">en</column>
             <column name="description">English</column>
         </insert>
 
-        <addColumn tableName="USER">
-            <column name="LANGUAGE_CODE" type="varchar(255)" defaultValue="en">
+        <addColumn tableName="user">
+            <column name="language_code" type="varchar(255)" defaultValue="en">
                 <constraints foreignKeyName="language_language_code" references="language(language_code)"
                              nullable="false"/>
             </column>
