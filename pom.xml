@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>biz.cosee.talks.loaning</groupId>
-	<artifactId>tdd-in-action</artifactId>
+	<artifactId>liquibase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>tdd-in-action</name>
-	<description>TDD sample project</description>
+	<name>liquibase</name>
+	<description>Liquibase sample project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
