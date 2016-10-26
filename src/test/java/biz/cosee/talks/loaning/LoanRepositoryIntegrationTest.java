@@ -12,7 +12,7 @@ import java.util.Date;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = TddInActionApplication.class)
+@SpringApplicationConfiguration(classes = LiquibaseApplication.class)
 @WebAppConfiguration
 public class LoanRepositoryIntegrationTest {
 
