@@ -61,4 +61,8 @@ public class User {
     public Language getLanguage() {
         return language;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }
