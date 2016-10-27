@@ -19,6 +19,8 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Loan> loans = new ArrayList<>();
 
+    private boolean locked;
+
     public User() {
     }
 
@@ -48,5 +50,17 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public void lock() {
+        locked = true;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
+    public void unlock() {
+        locked = false;
     }
 }

@@ -24,4 +24,18 @@ public class UserRepositoryIntegrationTest {
         assertThat(savedUser.getId()).isNotNull();
         assertThat(userRepository.findOne(savedUser.getId())).isNotNull();
     }
+
+    @Test
+    public void lockAndUnlockUser() {
+        User userToLock = userRepository.save(new User("userToLock"));
+        assertThat(userToLock.isLocked()).isFalse();
+
+        userToLock.lock();
+        User lockedUser = userRepository.save(userToLock);
+        assertThat(lockedUser.isLocked());
+
+        lockedUser.unlock();
+        User unlockedUser = userRepository.save(lockedUser);
+        assertThat(unlockedUser.isLocked()).isFalse();
+    }
 }

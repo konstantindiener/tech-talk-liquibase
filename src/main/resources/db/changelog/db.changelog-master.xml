@@ -31,4 +31,10 @@
             <column name="start_date" type="date"/>
         </createTable>
     </changeSet>
+
+    <changeSet id="addLockedStatusToUser" author="kdiener">
+        <addColumn tableName="user">
+            <column name="locked" type="boolean"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>
