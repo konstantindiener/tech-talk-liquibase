@@ -3,12 +3,14 @@ package biz.cosee.talks.loaning.rest;
 import biz.cosee.talks.loaning.User;
 import biz.cosee.talks.loaning.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class UserRestController {
 
     private UserRepository userRepository;
@@ -18,6 +20,7 @@ public class UserRestController {
         this.userRepository = userRepository;
     }
 
+    @RequestMapping("/")
     public List<UserDataObject> listAllUsers() {
         List<UserDataObject> userDataObjects = new ArrayList<>();
         userRepository.findAll()
