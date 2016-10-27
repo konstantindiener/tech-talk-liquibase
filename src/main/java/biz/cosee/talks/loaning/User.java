@@ -17,7 +17,7 @@ public class User {
     private String username;
 
     @OneToMany(mappedBy = "user")
-    private List<Loan> loans = new ArrayList();
+    private List<Loan> loans = new ArrayList<>();
 
     public User() {
     }
@@ -34,16 +34,19 @@ public class User {
         this.id = id;
     }
 
+    public List<Loan> getLoans() {
+        return loans;
+    }
 
     public void setLoans(List<Loan> loans) {
         this.loans = loans;
     }
 
-    public List<Loan> getLoans() {
-        return loans;
-    }
-
     public boolean hasMoreThanNumberOfLoans(int loanThreshold) {
         return loans.size() >= loanThreshold;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }
