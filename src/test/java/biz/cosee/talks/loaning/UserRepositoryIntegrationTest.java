@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -37,5 +38,11 @@ public class UserRepositoryIntegrationTest {
         lockedUser.unlock();
         User unlockedUser = userRepository.save(lockedUser);
         assertThat(unlockedUser.isLocked()).isFalse();
+    }
+
+    @Test(expected = JpaSystemException.class)
+    public void failOnDuplicateUsername() {
+        userRepository.save(new User("duplicateUsername"));
+        userRepository.save(new User("duplicateUsername"));
     }
 }

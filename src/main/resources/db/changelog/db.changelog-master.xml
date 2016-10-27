@@ -37,4 +37,8 @@
             <column name="locked" type="boolean"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="switchToUniqueUsernames" author="kdiener">
+        <addUniqueConstraint tableName="user" columnNames="username"/>
+    </changeSet>
 </databaseChangeLog>
