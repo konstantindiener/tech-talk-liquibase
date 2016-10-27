@@ -19,6 +19,9 @@ public class User {
 
     private boolean locked;
 
+    @ManyToOne
+    private Language language = Language.EN;
+
     public User() {
     }
 
@@ -60,5 +63,13 @@ public class User {
 
     public void unlock() {
         locked = false;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 }

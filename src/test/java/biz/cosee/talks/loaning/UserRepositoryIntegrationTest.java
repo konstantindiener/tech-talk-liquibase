@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.orm.jpa.JpaSystemException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -40,9 +40,16 @@ public class UserRepositoryIntegrationTest {
         assertThat(unlockedUser.isLocked()).isFalse();
     }
 
-    @Test(expected = JpaSystemException.class)
+    @Test(expected = DataIntegrityViolationException.class)
     public void failOnDuplicateUsername() {
         userRepository.save(new User("duplicateUsername"));
         userRepository.save(new User("duplicateUsername"));
+    }
+
+    @Test
+    public void checkUsersDefaultLangToBeEnglish() {
+        User userWithDefaultLanguage = userRepository.save(new User("userWithDefaultLanguage"));
+        Language enLanguage = userWithDefaultLanguage.getLanguage();
+        assertThat(enLanguage.getDescription()).isEqualTo("English");
     }
 }
