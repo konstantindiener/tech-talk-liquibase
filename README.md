@@ -1,3 +1,2 @@
-# cosee TechTalk "Test Driven Development in Action"
-Im cosee TechTalk "Test Driven Development in Action" wurden testgetrieben einige Komponenten entwickelt. Das Ergebnis
-findet sich in diesem Repository.
+# cosee TechTalk "Liquibase - flüssige Continuous Delivery inklusive Datenbank"
+Im cosee TechTalk "Liquibase" sind ein Domänenmodell inklusive Datenbankschema mit Liquibase entstanden.
